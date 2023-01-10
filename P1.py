@@ -1,22 +1,14 @@
-from random import randint, random, randrange
+from random import random
 import math
 
-def randNum():    
-    return math.floor(random()*10+1)
-
-while True:
-    print("Hello! Welcome to the quessing game \n In this game you will try to guess the missing number between 0 and 10!")
-    x = str(randNum())
-    #print(x)
-    guess = input("Take a guess: ")
-    print(guess)
-
-    while guess != x:
-        guess = input("Another one:")
-    else:
-        print("Good guess!")
+print("Hello! Welcome to the guessing game!\nTry to guess the missing number between 0 and 10!")
+x = lambda num : str(math.floor(random()*10+num))
+guess = input("Take a guess: ")
+while guess != x(1):
+    guess = input("Another one:")
+else:
+    print("Good guess!")
     
-
 
 
 
