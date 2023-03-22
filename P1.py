@@ -8,11 +8,3 @@ while guess != x(1):
     guess = input("Another one:")
 else:
     print("Good guess!")
-    
-
-
-
-
-    
-
-
