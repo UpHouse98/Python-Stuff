@@ -1,9 +1,9 @@
 url_to_site = 'http://www.pythonchallenge.com/'
 
 #0
-#instead of 0 in url put 2**38
 def function0():
     print(2**38)
+    #274877906944
 
 #1
 def function1():
