@@ -9,11 +9,12 @@ class Library:
         for book in self.booksList:
             print(book)
 
-    def lendBook(self, bookname):
-        self.booksList.remove(bookname)
+    def lendBook(self, bookName):
+        self.booksList.remove(bookName)
 
-    def addBook(self, bookname):
-        self.booksList.append(bookname)
+    def addBook(self, bookName):
+        self.booksList.append(bookName)
+        
         
 class Customer:
     books = []
@@ -22,10 +23,8 @@ class Customer:
         self.book = input()
         return self.book
 
-    def returnBook(self):
-        print('Returned books name:')
-        self.book = input()
-        return self.book
+    def returnBook(self, bookName):
+        return bookName
     
     def addToCollection(self, bookName):
         Customer.books.append(bookName)
@@ -33,6 +32,7 @@ class Customer:
 
     def myCollection(self):
         print(Customer.books)
+        return Customer.books
 
 
 library = Library(booksList)
@@ -40,7 +40,7 @@ customer = Customer()
 
 while True:
     print('------------------------------------------------------')
-    print('Type 1 to display the available books\nType 2 to lend a book\nType 3 to add a book\nType 4 to return a book\nType 5 to check your collection')
+    print('Type 1 to display the available books\nType 2 to lend a book\nType 3 to return a book\nType 4 to check your collection')
     print('------------------------------------------------------')
     print('To EXIT the library write anything!')
     choose = input('Choose an option: ')
@@ -53,12 +53,12 @@ while True:
             library.lendBook(book)
             customer.addToCollection(book)
         case '3':
-            book = input('Write the name of the book you want to add: ')
-            #any book can be added
-        case '4':
             book = input('Write the name of the book you want to return: ')
-            #the book name has to be in the collection
-        case '5':
+            if (book not in customer.myCollection()):
+                print('You do not have this book')
+            else:
+                library.addBook(customer.returnBook(book))
+        case '4':
             customer.myCollection()
         case _:
             break
